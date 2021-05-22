@@ -15,9 +15,11 @@ class GildedRoseTest extends TestCase
     const NORMAL_ITEM = 'foo';
     const AGED_BRIE_ITEM = 'Aged Brie';
     const SULFURAS_ITEM = 'Sulfuras, Hand of Ragnaros';
+    const BACKSTAGE_PASS_ITEM = 'Backstage passes to a TAFKAL80ETC concert';
     const NEGATIVE_SELL_IN = -1;
     const ZERO_QUALITY = 0;
     const MAX_QUALITY = 50;
+    const SELL_IN_MORE_THAN_TEN_DAYS = 11;
     private Item $item;
 
     public function testNormalItemShouldDecreaseSellInByOne(): void
@@ -120,8 +122,8 @@ class GildedRoseTest extends TestCase
 
     public function testBackstagePassShouldIncreaseQualityByOneWhenSellInMoreThanTenDays(): void
     {
-        $this->givenItem('Backstage passes to a TAFKAL80ETC concert')
-            ->withSellIn(11);
+        $this->givenItem(self::BACKSTAGE_PASS_ITEM)
+            ->withSellIn(self::SELL_IN_MORE_THAN_TEN_DAYS);
 
         $this->whenUpdateQuality();
 
