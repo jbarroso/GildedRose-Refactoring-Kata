@@ -19,10 +19,6 @@ class InventoryItem
 
     public function updateQuality(): void
     {
-        if ($this->item->name == 'Sulfuras, Hand of Ragnaros') {
-            return;
-        }
-
         if ($this->item->name == 'Aged Brie') {
             $this->increaseQuality();
             $this->decreaseSellIn();
