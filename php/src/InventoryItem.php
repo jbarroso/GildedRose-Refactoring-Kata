@@ -23,15 +23,15 @@ class InventoryItem
             return;
         }
 
-        if ($this->item->name == 'Aged Brie' or $this->item->name == 'Backstage passes to a TAFKAL80ETC concert') {
+        if ($this->item->name == 'Aged Brie') {
             $this->increaseQuality();
-            if ($this->item->name == 'Backstage passes to a TAFKAL80ETC concert') {
-                if ($this->item->sell_in < 11) {
-                    $this->increaseQuality();
-                }
-                if ($this->item->sell_in < 6) {
-                    $this->increaseQuality();
-                }
+        } elseif ($this->item->name == 'Backstage passes to a TAFKAL80ETC concert') {
+            $this->increaseQuality();
+            if ($this->item->sell_in < 11) {
+                $this->increaseQuality();
+            }
+            if ($this->item->sell_in < 6) {
+                $this->increaseQuality();
             }
         } else {
             $this->decreaseQuality();
