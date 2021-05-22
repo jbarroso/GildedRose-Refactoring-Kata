@@ -24,9 +24,7 @@ class InventoryItem
         }
 
         if ($this->item->name != 'Aged Brie' and $this->item->name != 'Backstage passes to a TAFKAL80ETC concert') {
-            if ($this->item->quality > 0) {
-                $this->item->quality = $this->item->quality - 1;
-            }
+            $this->decreaseQuality();
         } else {
             $this->increaseQuality();
             if ($this->item->name == 'Backstage passes to a TAFKAL80ETC concert') {
@@ -44,9 +42,7 @@ class InventoryItem
         if ($this->item->sell_in < 0) {
             if ($this->item->name != 'Aged Brie') {
                 if ($this->item->name != 'Backstage passes to a TAFKAL80ETC concert') {
-                    if ($this->item->quality > 0) {
-                        $this->item->quality = $this->item->quality - 1;
-                    }
+                    $this->decreaseQuality();
                 } else {
                     $this->item->quality = $this->item->quality - $this->item->quality;
                 }
@@ -60,6 +56,13 @@ class InventoryItem
     {
         if ($this->item->quality < 50) {
             $this->item->quality = $this->item->quality + 1;
+        }
+    }
+
+    private function decreaseQuality(): void
+    {
+        if ($this->item->quality > 0) {
+            $this->item->quality = $this->item->quality - 1;
         }
     }
 }
