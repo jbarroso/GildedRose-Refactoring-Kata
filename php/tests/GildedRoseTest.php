@@ -10,19 +10,32 @@ use PHPUnit\Framework\TestCase;
 
 class GildedRoseTest extends TestCase
 {
-    const POSITIVE_SELL_IN = 2;
-    const POSITIVE_QUALITY = 3;
-    const NORMAL_ITEM = 'foo';
-    const AGED_BRIE_ITEM = 'Aged Brie';
-    const SULFURAS_ITEM = 'Sulfuras, Hand of Ragnaros';
-    const BACKSTAGE_PASS_ITEM = 'Backstage passes to a TAFKAL80ETC concert';
-    const NEGATIVE_SELL_IN = -1;
-    const ZERO_QUALITY = 0;
-    const MAX_QUALITY = 50;
-    const SELL_IN_MORE_THAN_TEN_DAYS = 11;
-    const SELL_IN_TEN_DAYS = 10;
-    const SELL_IN_FIVE_DAYS = 5;
-    const SELL_IN_ZERO_DAYS = 0;
+    private const NORMAL_ITEM = 'foo';
+
+    private const AGED_BRIE_ITEM = 'Aged Brie';
+
+    private const SULFURAS_ITEM = 'Sulfuras, Hand of Ragnaros';
+
+    private const BACKSTAGE_PASS_ITEM = 'Backstage passes to a TAFKAL80ETC concert';
+
+    private const POSITIVE_SELL_IN = 2;
+
+    private const POSITIVE_QUALITY = 3;
+
+    private const NEGATIVE_SELL_IN = -1;
+
+    private const ZERO_QUALITY = 0;
+
+    private const MAX_QUALITY = 50;
+
+    private const SELL_IN_MORE_THAN_TEN_DAYS = 11;
+
+    private const SELL_IN_TEN_DAYS = 10;
+
+    private const SELL_IN_FIVE_DAYS = 5;
+
+    private const SELL_IN_ZERO_DAYS = 0;
+
     private Item $item;
 
     public function testNormalItemShouldDecreaseSellInByOne(): void
