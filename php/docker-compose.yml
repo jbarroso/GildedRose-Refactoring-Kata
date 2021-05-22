@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  cli:
+    build: .
+    volumes:
+      - .:/usr/src/app
+    user: "${UID:-1000}:${GID:-1000}"
+    environment:
+      - XDEBUG_MODE=coverage

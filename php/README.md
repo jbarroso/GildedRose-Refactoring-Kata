@@ -33,6 +33,12 @@ cd ./GildedRose-Refactoring-Kata/php
 composer install
 ```
 
+## Docker 
+You can also run all composer commands with docker:
+```sh
+docker-compose run --rm cli composer
+```
+
 ## Dependencies
 
 The project uses composer to install:
