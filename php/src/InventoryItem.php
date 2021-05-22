@@ -1,17 +1,11 @@
 <?php
 
-
 namespace GildedRose;
-
 
 class InventoryItem
 {
     protected Item $item;
 
-    /**
-     * InventoryItem constructor.
-     * @param Item $item
-     */
     public function __construct(Item $item)
     {
         $this->item = $item;
@@ -44,5 +38,4 @@ class InventoryItem
     {
         $this->item->sell_in = $this->item->sell_in - 1;
     }
-
 }

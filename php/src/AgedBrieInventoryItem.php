@@ -1,8 +1,6 @@
 <?php
 
-
 namespace GildedRose;
-
 
 class AgedBrieInventoryItem extends InventoryItem
 {
@@ -16,6 +14,4 @@ class AgedBrieInventoryItem extends InventoryItem
             $this->increaseQuality();
         }
     }
-
-
 }

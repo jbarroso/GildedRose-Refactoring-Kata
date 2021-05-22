@@ -1,12 +1,9 @@
 <?php
 
-
 namespace GildedRose;
-
 
 class InventoryItemFactory
 {
-
     public static function create(Item $item): InventoryItem
     {
         switch ($item->name) {
