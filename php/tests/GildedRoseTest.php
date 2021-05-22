@@ -14,6 +14,7 @@ class GildedRoseTest extends TestCase
     const POSITIVE_QUALITY = 3;
     const NORMAL_ITEM = 'foo';
     const AGED_BRIE_ITEM = 'Aged Brie';
+    const SULFURAS_ITEM = 'Sulfuras, Hand of Ragnaros';
     const NEGATIVE_SELL_IN = -1;
     const ZERO_QUALITY = 0;
     const MAX_QUALITY = 50;
@@ -110,7 +111,7 @@ class GildedRoseTest extends TestCase
 
     public function testSulfurasShouldNotChangeSellIn(): void
     {
-        $this->givenItem('Sulfuras, Hand of Ragnaros');
+        $this->givenItem(self::SULFURAS_ITEM);
 
         $this->whenUpdateQuality();
 
