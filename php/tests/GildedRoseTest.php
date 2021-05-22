@@ -44,6 +44,16 @@ class GildedRoseTest extends TestCase
         $this->thenQualityIsEqualTo(self::POSITIVE_QUALITY - 2);
     }
 
+    public function testShouldNotDecreaseQualityWhenNormalItemQualityIsZero(): void
+    {
+        $this->givenItem(self::NORMAL_ITEM);
+        $this->item->quality = 0;
+
+        $this->whenUpdateQuality();
+
+        $this->thenQualityIsEqualTo(0);
+    }
+
     private function givenItem(string $name): self
     {
         $this->item = new Item($name, self::POSITIVE_SELL_IN, self::POSITIVE_QUALITY);
