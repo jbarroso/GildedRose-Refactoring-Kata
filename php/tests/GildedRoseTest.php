@@ -20,6 +20,7 @@ class GildedRoseTest extends TestCase
     const ZERO_QUALITY = 0;
     const MAX_QUALITY = 50;
     const SELL_IN_MORE_THAN_TEN_DAYS = 11;
+    const SELL_IN_TEN_DAYS = 10;
     private Item $item;
 
     public function testNormalItemShouldDecreaseSellInByOne(): void
@@ -120,6 +121,15 @@ class GildedRoseTest extends TestCase
         $this->thenSellInIsEqualTo(self::POSITIVE_SELL_IN);
     }
 
+    public function testSulfurasShouldNotChangeQuality(): void
+    {
+        $this->givenItem(self::SULFURAS_ITEM);
+
+        $this->whenUpdateQuality();
+
+        $this->thenQualityIsEqualTo(self::POSITIVE_QUALITY);
+    }
+
     public function testBackstagePassShouldIncreaseQualityByOneWhenSellInMoreThanTenDays(): void
     {
         $this->givenItem(self::BACKSTAGE_PASS_ITEM)
@@ -133,20 +143,11 @@ class GildedRoseTest extends TestCase
     public function testBackstagePassShouldIncreaseQualityByTwoWhenSellInTenDays(): void
     {
         $this->givenItem(self::BACKSTAGE_PASS_ITEM)
-            ->withSellIn(10);
+            ->withSellIn(self::SELL_IN_TEN_DAYS);
 
         $this->whenUpdateQuality();
 
         $this->thenQualityIsEqualTo(self::POSITIVE_QUALITY + 2);
-    }
-
-    public function testSulfurasShouldNotChangeQuality(): void
-    {
-        $this->givenItem(self::SULFURAS_ITEM);
-
-        $this->whenUpdateQuality();
-
-        $this->thenQualityIsEqualTo(self::POSITIVE_QUALITY);
     }
 
     private function givenItem(string $name): self
