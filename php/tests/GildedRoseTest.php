@@ -118,6 +118,16 @@ class GildedRoseTest extends TestCase
         $this->thenSellInIsEqualTo(self::POSITIVE_SELL_IN);
     }
 
+    public function testBackstagePassShouldIncreaseQualityByOneWhenSellInMoreThanTenDays(): void
+    {
+        $this->givenItem('Backstage passes to a TAFKAL80ETC concert')
+            ->withSellIn(11);
+
+        $this->whenUpdateQuality();
+
+        $this->thenQualityIsEqualTo(self::POSITIVE_QUALITY + 1);
+    }
+
     public function testSulfurasShouldNotChangeQuality(): void
     {
         $this->givenItem(self::SULFURAS_ITEM);
