@@ -28,19 +28,13 @@ class InventoryItem
                 $this->item->quality = $this->item->quality - 1;
             }
         } else {
-            if ($this->item->quality < 50) {
-                $this->item->quality = $this->item->quality + 1;
-                if ($this->item->name == 'Backstage passes to a TAFKAL80ETC concert') {
-                    if ($this->item->sell_in < 11) {
-                        if ($this->item->quality < 50) {
-                            $this->item->quality = $this->item->quality + 1;
-                        }
-                    }
-                    if ($this->item->sell_in < 6) {
-                        if ($this->item->quality < 50) {
-                            $this->item->quality = $this->item->quality + 1;
-                        }
-                    }
+            $this->increaseQuality();
+            if ($this->item->name == 'Backstage passes to a TAFKAL80ETC concert') {
+                if ($this->item->sell_in < 11) {
+                    $this->increaseQuality();
+                }
+                if ($this->item->sell_in < 6) {
+                    $this->increaseQuality();
                 }
             }
         }
@@ -57,10 +51,15 @@ class InventoryItem
                     $this->item->quality = $this->item->quality - $this->item->quality;
                 }
             } else {
-                if ($this->item->quality < 50) {
-                    $this->item->quality = $this->item->quality + 1;
-                }
+                $this->increaseQuality();
             }
+        }
+    }
+
+    private function increaseQuality(): void
+    {
+        if ($this->item->quality < 50) {
+            $this->item->quality = $this->item->quality + 1;
         }
     }
 }
