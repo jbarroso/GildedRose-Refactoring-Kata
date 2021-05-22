@@ -13,6 +13,7 @@ class GildedRoseTest extends TestCase
     const POSITIVE_SELL_IN = 2;
     const POSITIVE_QUALITY = 3;
     const NORMAL_ITEM = 'foo';
+    const AGED_BRIE_ITEM = 'Aged Brie';
     const NEGATIVE_SELL_IN = -1;
     const ZERO_QUALITY = 0;
     private Item $item;
@@ -68,7 +69,7 @@ class GildedRoseTest extends TestCase
 
     public function testAgedBrieQualityShouldIncreaseByOneWhenItemGetsOlder(): void
     {
-        $this->givenItem('Aged Brie');
+        $this->givenItem(self::AGED_BRIE_ITEM);
 
         $this->whenUpdateQuality();
 
