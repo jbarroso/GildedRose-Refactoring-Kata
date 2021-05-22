@@ -12,6 +12,8 @@ class InventoryItemFactory
         switch ($item->name) {
             case 'Sulfuras, Hand of Ragnaros':
                 return new SulfurasInventoryItem($item);
+            case 'Aged Brie':
+                return new AgedBrieInventoryItem($item);
             default:
                 return new InventoryItem($item);
         }
