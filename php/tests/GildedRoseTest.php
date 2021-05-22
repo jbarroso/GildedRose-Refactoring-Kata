@@ -13,6 +13,7 @@ class GildedRoseTest extends TestCase
     const POSITIVE_SELL_IN = 2;
     const POSITIVE_QUALITY = 3;
     const NORMAL_ITEM = 'foo';
+    const NEGATIVE_SELL_IN = -1;
     private Item $item;
 
     public function testShouldDecreaseSellInByOneWithNormalItem(): void
@@ -36,7 +37,7 @@ class GildedRoseTest extends TestCase
     public function testShouldDecreaseQualityByTwoWhenNormalItemHasExpired(): void
     {
         $this->givenItem(self::NORMAL_ITEM);
-        $this->item->sell_in = -1;
+        $this->item->sell_in = self::NEGATIVE_SELL_IN;
 
         $this->whenUpdateQuality();
 
