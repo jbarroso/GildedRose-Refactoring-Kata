@@ -26,17 +26,8 @@ class InventoryItem
         if ($this->item->name == 'Aged Brie') {
             $this->increaseQuality();
             $this->item->sell_in = $this->item->sell_in - 1;
-
             if ($this->item->sell_in < 0) {
-                if ($this->item->name == 'Aged Brie') {
-                    $this->increaseQuality();
-                } else {
-                    if ($this->item->name == 'Backstage passes to a TAFKAL80ETC concert') {
-                        $this->item->quality = 0;
-                    } else {
-                        $this->decreaseQuality();
-                    }
-                }
+                $this->increaseQuality();
             }
         } elseif ($this->item->name == 'Backstage passes to a TAFKAL80ETC concert') {
             $this->increaseQuality();
@@ -47,35 +38,16 @@ class InventoryItem
                 $this->increaseQuality();
             }
             $this->item->sell_in = $this->item->sell_in - 1;
-
             if ($this->item->sell_in < 0) {
-                if ($this->item->name == 'Aged Brie') {
-                    $this->increaseQuality();
-                } else {
-                    if ($this->item->name == 'Backstage passes to a TAFKAL80ETC concert') {
-                        $this->item->quality = 0;
-                    } else {
-                        $this->decreaseQuality();
-                    }
-                }
+                $this->item->quality = 0;
             }
         } else {
             $this->decreaseQuality();
             $this->item->sell_in = $this->item->sell_in - 1;
-
             if ($this->item->sell_in < 0) {
-                if ($this->item->name == 'Aged Brie') {
-                    $this->increaseQuality();
-                } else {
-                    if ($this->item->name == 'Backstage passes to a TAFKAL80ETC concert') {
-                        $this->item->quality = 0;
-                    } else {
-                        $this->decreaseQuality();
-                    }
-                }
+                $this->decreaseQuality();
             }
         }
-
     }
 
     private function increaseQuality(): void
