@@ -14,6 +14,7 @@ class GildedRoseTest extends TestCase
     const POSITIVE_QUALITY = 3;
     const NORMAL_ITEM = 'foo';
     const NEGATIVE_SELL_IN = -1;
+    const ZERO_QUALITY = 0;
     private Item $item;
 
     public function testShouldDecreaseSellInByOneWithNormalItem(): void
@@ -47,11 +48,11 @@ class GildedRoseTest extends TestCase
     public function testShouldNotDecreaseQualityWhenNormalItemQualityIsZero(): void
     {
         $this->givenItem(self::NORMAL_ITEM);
-        $this->item->quality = 0;
+        $this->item->quality = self::ZERO_QUALITY;
 
         $this->whenUpdateQuality();
 
-        $this->thenQualityIsEqualTo(0);
+        $this->thenQualityIsEqualTo(self::ZERO_QUALITY);
     }
 
     private function givenItem(string $name): self
