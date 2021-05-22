@@ -25,6 +25,7 @@ class InventoryItem
 
         if ($this->item->name == 'Aged Brie') {
             $this->increaseQuality();
+            $this->temp();
         } elseif ($this->item->name == 'Backstage passes to a TAFKAL80ETC concert') {
             $this->increaseQuality();
             if ($this->item->sell_in < 11) {
@@ -33,23 +34,12 @@ class InventoryItem
             if ($this->item->sell_in < 6) {
                 $this->increaseQuality();
             }
+            $this->temp();
         } else {
             $this->decreaseQuality();
+            $this->temp();
         }
 
-        $this->item->sell_in = $this->item->sell_in - 1;
-
-        if ($this->item->sell_in < 0) {
-            if ($this->item->name == 'Aged Brie') {
-                $this->increaseQuality();
-            } else {
-                if ($this->item->name == 'Backstage passes to a TAFKAL80ETC concert') {
-                    $this->item->quality = 0;
-                } else {
-                    $this->decreaseQuality();
-                }
-            }
-        }
     }
 
     private function increaseQuality(): void
@@ -63,6 +53,23 @@ class InventoryItem
     {
         if ($this->item->quality > 0) {
             $this->item->quality = $this->item->quality - 1;
+        }
+    }
+
+    private function temp(): void
+    {
+        $this->item->sell_in = $this->item->sell_in - 1;
+
+        if ($this->item->sell_in < 0) {
+            if ($this->item->name == 'Aged Brie') {
+                $this->increaseQuality();
+            } else {
+                if ($this->item->name == 'Backstage passes to a TAFKAL80ETC concert') {
+                    $this->item->quality = 0;
+                } else {
+                    $this->decreaseQuality();
+                }
+            }
         }
     }
 }
