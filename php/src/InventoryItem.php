@@ -44,7 +44,7 @@ class InventoryItem
                 if ($this->item->name != 'Backstage passes to a TAFKAL80ETC concert') {
                     $this->decreaseQuality();
                 } else {
-                    $this->item->quality = $this->item->quality - $this->item->quality;
+                    $this->item->quality = 0;
                 }
             } else {
                 $this->increaseQuality();
