@@ -118,6 +118,15 @@ class GildedRoseTest extends TestCase
         $this->thenSellInIsEqualTo(self::POSITIVE_SELL_IN);
     }
 
+    public function testSulfurasShouldNotChangeQuality(): void
+    {
+        $this->givenItem(self::SULFURAS_ITEM);
+
+        $this->whenUpdateQuality();
+
+        $this->thenQualityIsEqualTo(self::POSITIVE_QUALITY);
+    }
+
     private function givenItem(string $name): self
     {
         $this->item = new Item($name, self::POSITIVE_SELL_IN, self::POSITIVE_QUALITY);
