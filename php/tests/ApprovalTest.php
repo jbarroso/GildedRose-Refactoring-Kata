@@ -1,6 +1,6 @@
 <?php
 
-namespace ApprovalTests\Tests;
+namespace Tests;
 
 use ApprovalTests\Approvals;
 use ApprovalTests\CombinationApprovals;
@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class ApprovalTest extends TestCase
 {
-    public function atestList(): void
+    public function testList(): void
     {
         $items = [
             new Item('+5 Dexterity Vest', 10, 20),
@@ -35,7 +35,7 @@ class ApprovalTest extends TestCase
         Approvals::verifyList($items);
     }
 
-    public function atestCombinations(): void
+    public function testCombinations(): void
     {
         $names = [
             '+5 Dexterity Vest',
@@ -54,10 +54,5 @@ class ApprovalTest extends TestCase
             $app->updateQuality();
             return $item;
         }, $names, $sellIns, $qualities);
-    }
-
-    public function testFoo(): void
-    {
-        $this->assertTrue(true);
     }
 }
