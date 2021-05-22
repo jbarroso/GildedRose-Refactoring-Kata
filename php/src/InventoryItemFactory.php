@@ -10,11 +10,11 @@ class InventoryItemFactory
     public static function create(Item $item): InventoryItem
     {
         switch ($item->name) {
-            case 'Sulfuras, Hand of Ragnaros':
+            case SulfurasInventoryItem::NAME:
                 return new SulfurasInventoryItem($item);
-            case 'Aged Brie':
+            case AgedBrieInventoryItem::NAME:
                 return new AgedBrieInventoryItem($item);
-            case 'Backstage passes to a TAFKAL80ETC concert':
+            case BackstagePassInventoryItem::NAME:
                 return new BackstagePassInventoryItem($item);
             default:
                 return new InventoryItem($item);

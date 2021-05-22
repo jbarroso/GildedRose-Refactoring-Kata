@@ -6,6 +6,8 @@ namespace GildedRose;
 
 class BackstagePassInventoryItem extends InventoryItem
 {
+    public const NAME = 'Backstage passes to a TAFKAL80ETC concert';
+
     public function updateQuality(): void
     {
         $this->increaseQuality();
