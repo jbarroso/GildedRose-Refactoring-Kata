@@ -36,17 +36,18 @@ class GildedRoseTest extends TestCase
 
     public function testShouldDecreaseQualityByTwoWhenNormalItemHasExpired(): void
     {
-        $this->givenItem(self::NORMAL_ITEM);
-        $this->item->sell_in = self::NEGATIVE_SELL_IN;
+        $this->givenItem(self::NORMAL_ITEM)
+            ->withSellIn(self::NEGATIVE_SELL_IN);
 
         $this->whenUpdateQuality();
 
         $this->thenQualityIsEqualTo(self::POSITIVE_QUALITY - 2);
     }
 
-    private function givenItem(string $name): void
+    private function givenItem(string $name): self
     {
         $this->item = new Item($name, self::POSITIVE_SELL_IN, self::POSITIVE_QUALITY);
+        return $this;
     }
 
     private function whenUpdateQuality(): void
@@ -63,5 +64,10 @@ class GildedRoseTest extends TestCase
     private function thenQualityIsEqualTo(int $expectedQuality): void
     {
         $this->assertSame($expectedQuality, $this->item->quality);
+    }
+
+    private function withSellIn(int $sellIn): void
+    {
+        $this->item->sell_in = $sellIn;
     }
 }
