@@ -97,6 +97,17 @@ class GildedRoseTest extends TestCase
         $this->thenQualityIsEqualTo(self::MAX_QUALITY);
     }
 
+    public function testAgedBrieShouldNotIncreaseQualityWhenItReachesTheMaximumValueAndItemHasExpired(): void
+    {
+        $this->givenItem(self::AGED_BRIE_ITEM)
+            ->withQuality(self::MAX_QUALITY)
+            ->withSellIn(self::NEGATIVE_SELL_IN);
+
+        $this->whenUpdateQuality();
+
+        $this->thenQualityIsEqualTo(self::MAX_QUALITY);
+    }
+
     private function givenItem(string $name): self
     {
         $this->item = new Item($name, self::POSITIVE_SELL_IN, self::POSITIVE_QUALITY);
