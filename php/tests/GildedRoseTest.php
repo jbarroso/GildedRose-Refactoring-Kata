@@ -18,7 +18,7 @@ class GildedRoseTest extends TestCase
     const ZERO_QUALITY = 0;
     private Item $item;
 
-    public function testShouldDecreaseSellInByOneWithNormalItem(): void
+    public function testNormalItemShouldDecreaseSellInByOne(): void
     {
         $this->givenItem(self::NORMAL_ITEM);
 
@@ -27,7 +27,7 @@ class GildedRoseTest extends TestCase
         $this->thenSellInIsEqualTo(self::POSITIVE_SELL_IN - 1);
     }
 
-    public function testShouldDecreaseQualityByOneWithNormalItem(): void
+    public function testNormalItemShouldDecreaseQualityByOne(): void
     {
         $this->givenItem(self::NORMAL_ITEM);
 
@@ -36,7 +36,7 @@ class GildedRoseTest extends TestCase
         $this->thenQualityIsEqualTo(self::POSITIVE_QUALITY - 1);
     }
 
-    public function testShouldDecreaseQualityByTwoWhenNormalItemHasExpired(): void
+    public function testNormalItemShouldDecreaseQualityByTwoWhenItemHasExpired(): void
     {
         $this->givenItem(self::NORMAL_ITEM)
             ->withSellIn(self::NEGATIVE_SELL_IN);
@@ -46,7 +46,7 @@ class GildedRoseTest extends TestCase
         $this->thenQualityIsEqualTo(self::POSITIVE_QUALITY - 2);
     }
 
-    public function testShouldNotDecreaseQualityWhenNormalItemQualityIsZero(): void
+    public function testNormalItemShouldNotDecreaseQualityWhenQualityIsZero(): void
     {
         $this->givenItem(self::NORMAL_ITEM)
             ->withQuality(self::ZERO_QUALITY);
@@ -56,7 +56,7 @@ class GildedRoseTest extends TestCase
         $this->thenQualityIsEqualTo(self::ZERO_QUALITY);
     }
 
-    public function testShouldNotDecreaseQualityWhenNormalItemQualityIsZeroAndItemHasExpired(): void
+    public function testNormalItemShouldNotDecreaseQualityWhenQualityIsZeroAndItemHasExpired(): void
     {
         $this->givenItem(self::NORMAL_ITEM)
             ->withQuality(self::ZERO_QUALITY)
@@ -67,7 +67,7 @@ class GildedRoseTest extends TestCase
         $this->thenQualityIsEqualTo(self::ZERO_QUALITY);
     }
 
-    public function testAgedBrieQualityShouldIncreaseByOneWhenItemGetsOlder(): void
+    public function testAgedBrieShouldIncreaseQualityByOneWhenItemGetsOlder(): void
     {
         $this->givenItem(self::AGED_BRIE_ITEM);
 
