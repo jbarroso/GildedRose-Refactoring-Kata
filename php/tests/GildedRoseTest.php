@@ -17,30 +17,27 @@ class GildedRoseTest extends TestCase
     public function testShouldDecreaseSellInByOneWithNormalItem(): void
     {
         // given
-        $sellIn = self::POSITIVE_SELL_IN;
-        $item = new Item(self::NORMAL_ITEM, $sellIn, 0);
+        $item = new Item(self::NORMAL_ITEM, self::POSITIVE_SELL_IN, self::POSITIVE_QUALITY);
 
         // when
         $gildedRose = new GildedRose([$item]);
         $gildedRose->updateQuality();
 
         // then
-        $this->assertSame($sellIn - 1, $item->sell_in);
+        $this->assertSame(self::POSITIVE_SELL_IN - 1, $item->sell_in);
     }
 
     public function testShouldDecreaseQualityByOneWithNormalItem(): void
     {
         // given
-        $sellIn = self::POSITIVE_SELL_IN;
-        $quality = self::POSITIVE_QUALITY;
-        $item = new Item(self::NORMAL_ITEM, $sellIn, $quality);
+        $item = new Item(self::NORMAL_ITEM, self::POSITIVE_SELL_IN, self::POSITIVE_QUALITY);
 
         // when
         $gildedRose = new GildedRose([$item]);
         $gildedRose->updateQuality();
 
         // then
-        $this->assertSame($quality - 1, $item->quality);
+        $this->assertSame(self::POSITIVE_QUALITY - 1, $item->quality);
     }
 
 }
