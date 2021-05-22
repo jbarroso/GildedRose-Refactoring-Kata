@@ -66,6 +66,14 @@ class GildedRoseTest extends TestCase
         $this->thenQualityIsEqualTo(self::ZERO_QUALITY);
     }
 
+    public function testAgedBrieQualityShouldIncreaseByOneWhenItemGetsOlder(): void
+    {
+        $this->givenItem('Aged Brie');
+
+        $this->whenUpdateQuality();
+
+        $this->thenQualityIsEqualTo(self::POSITIVE_QUALITY + 1);
+    }
 
     private function givenItem(string $name): self
     {
