@@ -21,6 +21,7 @@ class GildedRoseTest extends TestCase
     const MAX_QUALITY = 50;
     const SELL_IN_MORE_THAN_TEN_DAYS = 11;
     const SELL_IN_TEN_DAYS = 10;
+    const SELL_IN_FIVE_DAYS = 5;
     private Item $item;
 
     public function testNormalItemShouldDecreaseSellInByOne(): void
@@ -153,7 +154,7 @@ class GildedRoseTest extends TestCase
     public function testBackstagePassShouldIncreaseQualityByThreeWhenSellInFiveDays(): void
     {
         $this->givenItem(self::BACKSTAGE_PASS_ITEM)
-            ->withSellIn(5);
+            ->withSellIn(self::SELL_IN_FIVE_DAYS);
 
         $this->whenUpdateQuality();
 
