@@ -25,7 +25,7 @@ class InventoryItem
 
         if ($this->item->name == 'Aged Brie') {
             $this->increaseQuality();
-            $this->item->sell_in = $this->item->sell_in - 1;
+            $this->decreaseSellIn();
             if ($this->item->sell_in < 0) {
                 $this->increaseQuality();
             }
@@ -37,13 +37,13 @@ class InventoryItem
             if ($this->item->sell_in < 6) {
                 $this->increaseQuality();
             }
-            $this->item->sell_in = $this->item->sell_in - 1;
+            $this->decreaseSellIn();
             if ($this->item->sell_in < 0) {
                 $this->item->quality = 0;
             }
         } else {
             $this->decreaseQuality();
-            $this->item->sell_in = $this->item->sell_in - 1;
+            $this->decreaseSellIn();
             if ($this->item->sell_in < 0) {
                 $this->decreaseQuality();
             }
@@ -62,6 +62,11 @@ class InventoryItem
         if ($this->item->quality > 0) {
             $this->item->quality = $this->item->quality - 1;
         }
+    }
+
+    private function decreaseSellIn(): void
+    {
+        $this->item->sell_in = $this->item->sell_in - 1;
     }
 
 }
