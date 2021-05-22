@@ -4,19 +4,16 @@ declare(strict_types=1);
 
 namespace Tests;
 
+use GildedRose\AgedBrieInventoryItem;
+use GildedRose\BackstagePassInventoryItem;
 use GildedRose\GildedRose;
 use GildedRose\Item;
+use GildedRose\SulfurasInventoryItem;
 use PHPUnit\Framework\TestCase;
 
 class GildedRoseTest extends TestCase
 {
     private const NORMAL_ITEM = 'foo';
-
-    private const AGED_BRIE_ITEM = 'Aged Brie';
-
-    private const SULFURAS_ITEM = 'Sulfuras, Hand of Ragnaros';
-
-    private const BACKSTAGE_PASS_ITEM = 'Backstage passes to a TAFKAL80ETC concert';
 
     private const POSITIVE_SELL_IN = 2;
 
@@ -89,7 +86,7 @@ class GildedRoseTest extends TestCase
 
     public function testAgedBrieShouldIncreaseQualityByOneWhenItemGetsOlder(): void
     {
-        $this->givenItem(self::AGED_BRIE_ITEM);
+        $this->givenItem(AgedBrieInventoryItem::NAME);
 
         $this->whenUpdateQuality();
 
@@ -98,7 +95,7 @@ class GildedRoseTest extends TestCase
 
     public function testAgedBrieShouldIncreaseQualityByTwoWhenItemHasExpired(): void
     {
-        $this->givenItem(self::AGED_BRIE_ITEM)
+        $this->givenItem(AgedBrieInventoryItem::NAME)
             ->withSellIn(self::NEGATIVE_SELL_IN);
 
         $this->whenUpdateQuality();
@@ -108,7 +105,7 @@ class GildedRoseTest extends TestCase
 
     public function testAgedBrieShouldNotIncreaseQualityWhenItReachesTheMaximumValue(): void
     {
-        $this->givenItem(self::AGED_BRIE_ITEM)
+        $this->givenItem(AgedBrieInventoryItem::NAME)
             ->withQuality(self::MAX_QUALITY);
 
         $this->whenUpdateQuality();
@@ -118,7 +115,7 @@ class GildedRoseTest extends TestCase
 
     public function testAgedBrieShouldNotIncreaseQualityWhenItReachesTheMaximumValueAndItemHasExpired(): void
     {
-        $this->givenItem(self::AGED_BRIE_ITEM)
+        $this->givenItem(AgedBrieInventoryItem::NAME)
             ->withQuality(self::MAX_QUALITY)
             ->withSellIn(self::NEGATIVE_SELL_IN);
 
@@ -129,7 +126,7 @@ class GildedRoseTest extends TestCase
 
     public function testSulfurasShouldNotChangeSellIn(): void
     {
-        $this->givenItem(self::SULFURAS_ITEM);
+        $this->givenItem(SulfurasInventoryItem::NAME);
 
         $this->whenUpdateQuality();
 
@@ -138,7 +135,7 @@ class GildedRoseTest extends TestCase
 
     public function testSulfurasShouldNotChangeQuality(): void
     {
-        $this->givenItem(self::SULFURAS_ITEM);
+        $this->givenItem(SulfurasInventoryItem::NAME);
 
         $this->whenUpdateQuality();
 
@@ -147,7 +144,7 @@ class GildedRoseTest extends TestCase
 
     public function testBackstagePassShouldIncreaseQualityByOneWhenSellInMoreThanTenDays(): void
     {
-        $this->givenItem(self::BACKSTAGE_PASS_ITEM)
+        $this->givenItem(BackstagePassInventoryItem::NAME)
             ->withSellIn(self::SELL_IN_MORE_THAN_TEN_DAYS);
 
         $this->whenUpdateQuality();
@@ -157,7 +154,7 @@ class GildedRoseTest extends TestCase
 
     public function testBackstagePassShouldIncreaseQualityByTwoWhenSellInTenDays(): void
     {
-        $this->givenItem(self::BACKSTAGE_PASS_ITEM)
+        $this->givenItem(BackstagePassInventoryItem::NAME)
             ->withSellIn(self::SELL_IN_TEN_DAYS);
 
         $this->whenUpdateQuality();
@@ -167,7 +164,7 @@ class GildedRoseTest extends TestCase
 
     public function testBackstagePassShouldIncreaseQualityByThreeWhenSellInFiveDays(): void
     {
-        $this->givenItem(self::BACKSTAGE_PASS_ITEM)
+        $this->givenItem(BackstagePassInventoryItem::NAME)
             ->withSellIn(self::SELL_IN_FIVE_DAYS);
 
         $this->whenUpdateQuality();
@@ -177,7 +174,7 @@ class GildedRoseTest extends TestCase
 
     public function testBackstagePassShouldChangeQualityToZeroWhenItemHasExpired(): void
     {
-        $this->givenItem(self::BACKSTAGE_PASS_ITEM)
+        $this->givenItem(BackstagePassInventoryItem::NAME)
             ->withSellIn(self::SELL_IN_ZERO_DAYS);
 
         $this->whenUpdateQuality();
