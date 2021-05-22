@@ -10,11 +10,15 @@ use PHPUnit\Framework\TestCase;
 
 class GildedRoseTest extends TestCase
 {
+    const POSITIVE_SELL_IN = 2;
+    const POSITIVE_QUALITY = 3;
+    const NORMAL_ITEM = 'foo';
+
     public function testShouldDecreaseSellInByOneWithNormalItem(): void
     {
         // given
-        $sellIn = 2;
-        $item = new Item('foo', $sellIn, 0);
+        $sellIn = self::POSITIVE_SELL_IN;
+        $item = new Item(self::NORMAL_ITEM, $sellIn, 0);
 
         // when
         $gildedRose = new GildedRose([$item]);
@@ -27,9 +31,9 @@ class GildedRoseTest extends TestCase
     public function testShouldDecreaseQualityByOneWithNormalItem(): void
     {
         // given
-        $sellIn = 2;
-        $quality = 3;
-        $item = new Item('foo', $sellIn, $quality);
+        $sellIn = self::POSITIVE_SELL_IN;
+        $quality = self::POSITIVE_QUALITY;
+        $item = new Item(self::NORMAL_ITEM, $sellIn, $quality);
 
         // when
         $gildedRose = new GildedRose([$item]);
