@@ -16,6 +16,7 @@ class GildedRoseTest extends TestCase
     const AGED_BRIE_ITEM = 'Aged Brie';
     const NEGATIVE_SELL_IN = -1;
     const ZERO_QUALITY = 0;
+    const MAX_QUALITY = 50;
     private Item $item;
 
     public function testNormalItemShouldDecreaseSellInByOne(): void
@@ -89,11 +90,11 @@ class GildedRoseTest extends TestCase
     public function testAgedBrieShouldNotIncreaseQualityWhenItReachesTheMaximumValue(): void
     {
         $this->givenItem(self::AGED_BRIE_ITEM)
-            ->withQuality(50);
+            ->withQuality(self::MAX_QUALITY);
 
         $this->whenUpdateQuality();
 
-        $this->thenQualityIsEqualTo(50);
+        $this->thenQualityIsEqualTo(self::MAX_QUALITY);
     }
 
     private function givenItem(string $name): self
