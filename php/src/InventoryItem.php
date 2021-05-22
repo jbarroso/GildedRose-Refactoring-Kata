@@ -19,11 +19,13 @@ class InventoryItem
 
     public function updateQuality(): void
     {
+        if ($this->item->name == 'Sulfuras, Hand of Ragnaros') {
+            return;
+        }
+
         if ($this->item->name != 'Aged Brie' and $this->item->name != 'Backstage passes to a TAFKAL80ETC concert') {
             if ($this->item->quality > 0) {
-                if ($this->item->name != 'Sulfuras, Hand of Ragnaros') {
-                    $this->item->quality = $this->item->quality - 1;
-                }
+                $this->item->quality = $this->item->quality - 1;
             }
         } else {
             if ($this->item->quality < 50) {
@@ -43,17 +45,13 @@ class InventoryItem
             }
         }
 
-        if ($this->item->name != 'Sulfuras, Hand of Ragnaros') {
-            $this->item->sell_in = $this->item->sell_in - 1;
-        }
+        $this->item->sell_in = $this->item->sell_in - 1;
 
         if ($this->item->sell_in < 0) {
             if ($this->item->name != 'Aged Brie') {
                 if ($this->item->name != 'Backstage passes to a TAFKAL80ETC concert') {
                     if ($this->item->quality > 0) {
-                        if ($this->item->name != 'Sulfuras, Hand of Ragnaros') {
-                            $this->item->quality = $this->item->quality - 1;
-                        }
+                        $this->item->quality = $this->item->quality - 1;
                     }
                 } else {
                     $this->item->quality = $this->item->quality - $this->item->quality;
