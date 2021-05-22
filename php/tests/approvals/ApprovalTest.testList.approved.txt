@@ -1,0 +1,8 @@
+[0] -> +5 Dexterity Vest, 0, 10
+[1] -> Aged Brie, -8, 18
+[2] -> Elixir of the Mongoose, -5, 0
+[3] -> Sulfuras, Hand of Ragnaros, 0, 80
+[4] -> Sulfuras, Hand of Ragnaros, -1, 80
+[5] -> Backstage passes to a TAFKAL80ETC concert, 5, 35
+[6] -> Backstage passes to a TAFKAL80ETC concert, 0, 50
+[7] -> Backstage passes to a TAFKAL80ETC concert, -5, 0
