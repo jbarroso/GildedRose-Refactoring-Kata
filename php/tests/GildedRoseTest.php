@@ -76,6 +76,16 @@ class GildedRoseTest extends TestCase
         $this->thenQualityIsEqualTo(self::POSITIVE_QUALITY + 1);
     }
 
+    public function testAgedBrieShouldIncreaseQualityByTwoWhenItemHasExpired(): void
+    {
+        $this->givenItem(self::AGED_BRIE_ITEM)
+            ->withSellIn(self::NEGATIVE_SELL_IN);
+
+        $this->whenUpdateQuality();
+
+        $this->thenQualityIsEqualTo(self::POSITIVE_QUALITY + 2);
+    }
+
     private function givenItem(string $name): self
     {
         $this->item = new Item($name, self::POSITIVE_SELL_IN, self::POSITIVE_QUALITY);
