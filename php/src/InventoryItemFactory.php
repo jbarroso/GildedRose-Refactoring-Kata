@@ -14,6 +14,8 @@ class InventoryItemFactory
                 return new SulfurasInventoryItem($item);
             case 'Aged Brie':
                 return new AgedBrieInventoryItem($item);
+            case 'Backstage passes to a TAFKAL80ETC concert':
+                return new BackstagePassInventoryItem($item);
             default:
                 return new InventoryItem($item);
         }
