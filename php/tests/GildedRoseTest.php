@@ -130,6 +130,16 @@ class GildedRoseTest extends TestCase
         $this->thenQualityIsEqualTo(self::POSITIVE_QUALITY + 1);
     }
 
+    public function testBackstagePassShouldIncreaseQualityByTwoWhenSellInTenDays(): void
+    {
+        $this->givenItem(self::BACKSTAGE_PASS_ITEM)
+            ->withSellIn(10);
+
+        $this->whenUpdateQuality();
+
+        $this->thenQualityIsEqualTo(self::POSITIVE_QUALITY + 2);
+    }
+
     public function testSulfurasShouldNotChangeQuality(): void
     {
         $this->givenItem(self::SULFURAS_ITEM);
