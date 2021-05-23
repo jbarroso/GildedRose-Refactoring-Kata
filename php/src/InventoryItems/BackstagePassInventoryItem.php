@@ -21,12 +21,17 @@ class BackstagePassInventoryItem extends InventoryItem
         }
         $this->decreaseSellIn();
         if ($this->hasExpired()) {
-            $this->item->quality = 0;
+            $this->setQualityToZero();
         }
     }
 
     private function sellInLessOrEqualThan(int $days): bool
     {
         return $this->item->sell_in <= $days;
+    }
+
+    private function setQualityToZero(): void
+    {
+        $this->item->quality = 0;
     }
 }
