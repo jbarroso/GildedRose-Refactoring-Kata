@@ -4,6 +4,8 @@ namespace GildedRose;
 
 class InventoryItem
 {
+    protected const DECREASE_QUALITY_VELOCITY = 1;
+
     protected Item $item;
 
     public function __construct(Item $item)
@@ -30,7 +32,7 @@ class InventoryItem
     protected function decreaseQuality(): void
     {
         if ($this->item->quality > 0) {
-            $this->item->quality = $this->item->quality - 1;
+            $this->item->quality = $this->item->quality - static::DECREASE_QUALITY_VELOCITY;
         }
     }
 

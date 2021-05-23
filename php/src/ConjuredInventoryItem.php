@@ -6,10 +6,5 @@ class ConjuredInventoryItem extends InventoryItem
 {
     public const NAME = 'Conjured Mana Cake';
 
-    protected function decreaseQuality(): void
-    {
-        if ($this->item->quality > 0) {
-            $this->item->quality = $this->item->quality - 2;
-        }
-    }
+    protected const DECREASE_QUALITY_VELOCITY = parent::DECREASE_QUALITY_VELOCITY * 2;
 }
