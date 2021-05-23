@@ -4,6 +4,8 @@ namespace GildedRose;
 
 class InventoryItem
 {
+    public const MAX_QUALITY = 50;
+
     protected const DECREASE_QUALITY_VELOCITY = 1;
 
     protected Item $item;
@@ -24,7 +26,7 @@ class InventoryItem
 
     protected function increaseQuality(): void
     {
-        if ($this->item->quality < 50) {
+        if ($this->item->quality < self::MAX_QUALITY) {
             $this->item->quality = $this->item->quality + 1;
         }
     }
