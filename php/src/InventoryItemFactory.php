@@ -2,6 +2,12 @@
 
 namespace GildedRose;
 
+use GildedRose\InventoryItems\AgedBrieInventoryItem;
+use GildedRose\InventoryItems\BackstagePassInventoryItem;
+use GildedRose\InventoryItems\ConjuredInventoryItem;
+use GildedRose\InventoryItems\InventoryItem;
+use GildedRose\InventoryItems\SulfurasInventoryItem;
+
 class InventoryItemFactory
 {
     public static function create(Item $item): InventoryItem

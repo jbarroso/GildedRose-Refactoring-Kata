@@ -1,6 +1,6 @@
 <?php
 
-namespace GildedRose;
+namespace GildedRose\InventoryItems;
 
 class SulfurasInventoryItem extends InventoryItem
 {

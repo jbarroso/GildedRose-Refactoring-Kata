@@ -1,6 +1,8 @@
 <?php
 
-namespace GildedRose;
+namespace GildedRose\InventoryItems;
+
+use GildedRose\Item;
 
 class InventoryItem
 {

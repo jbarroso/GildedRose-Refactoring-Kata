@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use GildedRose\AgedBrieInventoryItem;
-use GildedRose\BackstagePassInventoryItem;
-use GildedRose\ConjuredInventoryItem;
 use GildedRose\GildedRose;
-use GildedRose\InventoryItem;
+use GildedRose\InventoryItems\AgedBrieInventoryItem;
+use GildedRose\InventoryItems\BackstagePassInventoryItem;
+use GildedRose\InventoryItems\ConjuredInventoryItem;
+use GildedRose\InventoryItems\InventoryItem;
+use GildedRose\InventoryItems\SulfurasInventoryItem;
 use GildedRose\Item;
-use GildedRose\SulfurasInventoryItem;
 use PHPUnit\Framework\TestCase;
 
 class GildedRoseTest extends TestCase
