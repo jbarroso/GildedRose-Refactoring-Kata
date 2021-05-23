@@ -31,9 +31,7 @@ class InventoryItem
 
     protected function decreaseQuality(): void
     {
-        if ($this->item->quality > 0) {
-            $this->item->quality = $this->item->quality - static::DECREASE_QUALITY_VELOCITY;
-        }
+        $this->item->quality = max(0, $this->item->quality - static::DECREASE_QUALITY_VELOCITY);
     }
 
     protected function decreaseSellIn(): void
