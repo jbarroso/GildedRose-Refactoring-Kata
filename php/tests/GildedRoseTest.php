@@ -8,6 +8,7 @@ use GildedRose\AgedBrieInventoryItem;
 use GildedRose\BackstagePassInventoryItem;
 use GildedRose\ConjuredInventoryItem;
 use GildedRose\GildedRose;
+use GildedRose\InventoryItem;
 use GildedRose\Item;
 use GildedRose\SulfurasInventoryItem;
 use PHPUnit\Framework\TestCase;
@@ -25,8 +26,6 @@ class GildedRoseTest extends TestCase
     private const ZERO_QUALITY = 0;
 
     private const ONE_QUALITY = 1;
-
-    private const MAX_QUALITY = 50;
 
     private const SELL_IN_MORE_THAN_TEN_DAYS = 11;
 
@@ -109,22 +108,22 @@ class GildedRoseTest extends TestCase
     public function testAgedBrieShouldNotIncreaseQualityWhenItReachesTheMaximumValue(): void
     {
         $this->givenItem(AgedBrieInventoryItem::NAME)
-            ->withQuality(self::MAX_QUALITY);
+            ->withQuality(InventoryItem::MAX_QUALITY);
 
         $this->whenUpdateQuality();
 
-        $this->thenQualityIsEqualTo(self::MAX_QUALITY);
+        $this->thenQualityIsEqualTo(InventoryItem::MAX_QUALITY);
     }
 
     public function testAgedBrieShouldNotIncreaseQualityWhenItReachesTheMaximumValueAndItemHasExpired(): void
     {
         $this->givenItem(AgedBrieInventoryItem::NAME)
-            ->withQuality(self::MAX_QUALITY)
+            ->withQuality(InventoryItem::MAX_QUALITY)
             ->withSellIn(self::NEGATIVE_SELL_IN);
 
         $this->whenUpdateQuality();
 
-        $this->thenQualityIsEqualTo(self::MAX_QUALITY);
+        $this->thenQualityIsEqualTo(InventoryItem::MAX_QUALITY);
     }
 
     public function testSulfurasShouldNotChangeSellIn(): void
