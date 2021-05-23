@@ -13,7 +13,7 @@ class InventoryItemFactory
                 return new AgedBrieInventoryItem($item);
             case BackstagePassInventoryItem::NAME:
                 return new BackstagePassInventoryItem($item);
-            case 'Conjured Mana Cake':
+            case ConjuredInventoryItem::NAME:
                 return new ConjuredInventoryItem($item);
             default:
                 return new InventoryItem($item);
