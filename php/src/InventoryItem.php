@@ -17,7 +17,7 @@ class InventoryItem
     {
         $this->decreaseQuality();
         $this->decreaseSellIn();
-        if ($this->item->sell_in < 0) {
+        if ($this->hasExpired()) {
             $this->decreaseQuality();
         }
     }
@@ -37,5 +37,10 @@ class InventoryItem
     protected function decreaseSellIn(): void
     {
         $this->item->sell_in = $this->item->sell_in - 1;
+    }
+
+    protected function hasExpired(): bool
+    {
+        return $this->item->sell_in < 0;
     }
 }

@@ -16,7 +16,7 @@ class BackstagePassInventoryItem extends InventoryItem
             $this->increaseQuality();
         }
         $this->decreaseSellIn();
-        if ($this->item->sell_in < 0) {
+        if ($this->hasExpired()) {
             $this->item->quality = 0;
         }
     }
