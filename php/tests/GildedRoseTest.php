@@ -24,6 +24,8 @@ class GildedRoseTest extends TestCase
 
     private const ZERO_QUALITY = 0;
 
+    private const ONE_QUALITY = 1;
+
     private const MAX_QUALITY = 50;
 
     private const SELL_IN_MORE_THAN_TEN_DAYS = 11;
@@ -195,7 +197,7 @@ class GildedRoseTest extends TestCase
     public function testConjuredShouldDecreaseQualityToZero(): void
     {
         $this->givenItem(ConjuredInventoryItem::NAME)
-            ->withQuality(1);
+            ->withQuality(self::ONE_QUALITY);
 
         $this->whenUpdateQuality();
 
