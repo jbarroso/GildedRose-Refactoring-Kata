@@ -182,6 +182,15 @@ class GildedRoseTest extends TestCase
         $this->thenQualityIsEqualTo(self::ZERO_QUALITY);
     }
 
+    public function testConjuredShouldDecreaseQualityByTwo(): void
+    {
+        $this->givenItem('Conjured Mana Cake');
+
+        $this->whenUpdateQuality();
+
+        $this->thenQualityIsEqualTo(self::POSITIVE_QUALITY - 2);
+    }
+
     private function givenItem(string $name): self
     {
         $this->item = new Item($name, self::POSITIVE_SELL_IN, self::POSITIVE_QUALITY);
