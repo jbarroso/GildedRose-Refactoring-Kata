@@ -6,6 +6,7 @@ namespace Tests;
 
 use GildedRose\AgedBrieInventoryItem;
 use GildedRose\BackstagePassInventoryItem;
+use GildedRose\ConjuredInventoryItem;
 use GildedRose\GildedRose;
 use GildedRose\Item;
 use GildedRose\SulfurasInventoryItem;
@@ -184,7 +185,7 @@ class GildedRoseTest extends TestCase
 
     public function testConjuredShouldDecreaseQualityByTwo(): void
     {
-        $this->givenItem('Conjured Mana Cake');
+        $this->givenItem(ConjuredInventoryItem::NAME);
 
         $this->whenUpdateQuality();
 
